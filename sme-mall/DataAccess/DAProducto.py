@@ -9,6 +9,7 @@ Emanuel Avendano
 from google.appengine.ext import ndb
 
 class DAProducto(ndb.Model):
+	_KeyMerc = ndb.StringProperty(indexed=True)
     _CantidadDisponibleProd = ndb.IntegerProperty(indexed=False)
 	_PrecioUnitarioProd = ndb.IntegerProperty(indexed=False)
 	_FechaDevolucionProd = ndb.StringProperty(indexed=False)

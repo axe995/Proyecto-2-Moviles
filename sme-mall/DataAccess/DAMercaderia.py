@@ -13,6 +13,9 @@ class DAMercaderia(ndb.Model):
 	_DescripcionMerc = ndb.StringProperty(indexed=False)
 	_URLFotoMerc = ndb.StringProperty(indexed=False)
 	_TipoMerc = ndb.StringProperty(indexed=False)
+	_KeyTienda = ndb.StringProperty(indexed=True)
+	_KeyContrato = ndb.StringProperty(indexed=True)
+	_KeyDisponibilidad = ndb.StringProperty(indexed=True)
 	
 	def setNombreMerc(self, pNombreMerc=""):
      if type(pNombreMerc) is str:

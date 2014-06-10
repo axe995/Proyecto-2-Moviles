@@ -16,6 +16,7 @@ class CProducto:
 		self.mCantidadDisponibleProd = ""
 		self.mPrecioUnitarioProd = ""
 		self.mFechaDevolucionProd = ""
+		self.mKeyMerc = ""
 		self.mKeyValue = ""
 		if type(pCantidadDisponibleProd) is str:
 			self.mCantidadDisponibleProd = pCantidadDisponibleProd
@@ -23,6 +24,8 @@ class CProducto:
 			self.mPrecioUnitarioProd = pPrecioUnitarioProd
 		if type(pFechaDevolucionProd) is str:
 			self.mFechaDevolucionProd = pFechaDevolucionProd
+		if type(pKeyMerc) is str:
+			self.mKeyMerc = pKeyMerc
 		if type(pKeyValue) is str:
 			self.mKeyValue = pKeyValue
 
@@ -30,6 +33,10 @@ class CProducto:
 	def setKeyValue(self,pKeyValue):
 		if type(pKeyValue) is str:
 			self.mKeyValue = pKeyValue
+			
+	def setKeyMerc(self,pKeyMerc):
+		if type(pKeyMerc) is str:
+			self.mKeyMerc = pKeyMerc
 
 	def setCantidadDisponibleProd(self, pCantidadDisponibleProd=""):
 		if type(pCantidadDisponibleProd) is str:

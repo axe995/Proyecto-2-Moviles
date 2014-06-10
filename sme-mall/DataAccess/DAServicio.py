@@ -9,6 +9,7 @@ Emanuel Avendano
 from google.appengine.ext import ndb
 
 class DAServicio(ndb.Model):
+	_KeyMerc = ndb.StringProperty(indexed=True)
 	_PrecioContrato = ndb.IntegerProperty(indexed=False)
 	_FechaInicioContrato = ndb.StringProperty(indexed=False)
 	_FechaLiberacionContrato = ndb.StringProperty(indexed=False)

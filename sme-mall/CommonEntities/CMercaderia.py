@@ -11,7 +11,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 import JsonEncoder
 
 class CMercaderia:
-    def __init__(self, pNombreMerc="", pDescripcionMerc="", pURLFotoMerc="", pTipoMerc="", pKeyValue=""):
+    def __init__(self, pNombreMerc="", pDescripcionMerc="", pURLFotoMerc="", pTipoMerc="", pKeyTienda="", pKeyContrato="", pKeyDisponibilidad="", pKeyValue=""):
 		self.mNombreMerc = ""
 		self.mDescripcionMerc = ""
 		self.mURLFotoMerc = ""
@@ -25,6 +25,12 @@ class CMercaderia:
 			self.mURLFotoMerc = pURLFotoMerc
 		if type(pTipoMerc) is str:
 			self.mTipoMerc = pTipoMerc
+		if type(pKeyTienda) is str:
+			self.mKeyTienda = pKeyTienda
+		if type(pKeyContrato) is str:
+			self.mKeyContrato = pKeyContrato
+		if type(pKeyDisponibilidad) is str:
+			self.mKeyDisponibilidad = pKeyDisponibilidad
 		if type(pKeyValue) is str:
 			self.mKeyValue = pKeyValue
 
@@ -32,6 +38,18 @@ class CMercaderia:
 	def setKeyValue(self,pKeyValue):
 		if type(pKeyValue) is str:
 			self.mKeyValue = pKeyValue
+			
+	def setKeyTienda(self,pKeyTienda):
+		if type(pKeyTienda) is str:
+			self.mKeyTienda = pKeyTienda
+			
+	def setKeyContrato(self,pKeyContrato):
+		if type(pKeyContrato) is str:
+			self.mKeyContrato = pKeyContrato
+			
+	def setKeyDisponibilidad(self,pKeyDisponibilidad):
+		if type(pKeyDisponibilidad) is str:
+			self.mKeyDisponibilidad = pKeyDisponibilidad
 
 	def setNombreMerc(self, pNombreMerc=""):
 		if type(pNombreMerc) is str:

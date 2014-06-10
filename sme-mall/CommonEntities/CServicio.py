@@ -11,10 +11,11 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 import JsonEncoder
 
 class CServicio:
-    def __init__(self, pPrecioContrato="", pFechaInicioContrato="", pFechaLiberacionContrato="", pKeyValue=""):
+    def __init__(self, pPrecioContrato="", pFechaInicioContrato="", pFechaLiberacionContrato="", pKeyMerc="", pKeyValue=""):
 		self.mPrecioContrato = ""
 		self.mFechaInicioContrato = ""
 		self.mFechaLiberacionContrato = ""
+		self.mKeyMerc = ""
 		self.mKeyValue = ""
 		if type(pPrecioContrato) is str:
 			self.mPrecioContrato = pPrecioContrato
@@ -22,6 +23,8 @@ class CServicio:
 			self.mFechaInicioContrato = pFechaInicioContrato
 		if type(pFechaLiberacionContrato) is str:
 			self.mFechaLiberacionContrato = pFechaLiberacionContrato
+		if type(pKeyMerc) is str:
+			self.mKeyMerc = pKeyMerc
 		if type(pKeyValue) is str:
 			self.mKeyValue = pKeyValue
 
@@ -29,6 +32,10 @@ class CServicio:
 	def setKeyValue(self,pKeyValue):
 		if type(pKeyValue) is str:
 			self.mKeyValue = pKeyValue
+			
+	def setKeyMerc(self,pKeyMerc):
+		if type(pKeyMerc) is str:
+			self.mKeyMerc = pKeyMerc
 
 	def setPrecioContrato(self, pPrecioContrato=""):
 		if type(pPrecioContrato) is str:

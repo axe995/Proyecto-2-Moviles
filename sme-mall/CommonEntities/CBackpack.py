@@ -12,12 +12,10 @@ import JsonEncoder
 
 class CBackpack:
     def __init__(self, pKeyCliente="", pKeyValue=""):
-		self.mKeyCliente = ""
 		self.mKeyValue = ""
 		
 		if type(pKeyCliente) is str:
-			self.mKeyCliente = pKeyCliente
-		
+			self.mKeyValue = pKeyValue
 		if type(pKeyValue) is str:
 			self.mKeyValue = pKeyValue
 
