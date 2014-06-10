@@ -16,6 +16,9 @@ class CMercaderia:
 		self.mDescripcionMerc = ""
 		self.mURLFotoMerc = ""
 		self.mTipoMerc = ""
+		self.mKeyTienda = ""
+		self.mKeyContrato = ""
+		self.mKeyDisponibilidad = ""
 		self.mKeyValue = ""
 		if type(pNombreMerc) is str:
 			self.mNombreMerc = pNombreMerc
