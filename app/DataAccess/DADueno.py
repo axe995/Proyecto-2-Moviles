@@ -8,9 +8,7 @@ Emanuel Avendano
 """
 from google.appengine.ext import ndb
 
-pNombreDueno="", pCorreoDueno="", pResidenciaDueno="", pDescripcionDueno=""
-
-class DACliente(ndb.Model):
+class DADueno(ndb.Model):
     mNombreDueno = ndb.StringProperty(indexed=True)
     mCorreoDueno = ndb.StringProperty(indexed=True)
     mResidenciaDueno = ndb.StringProperty(indexed=True)
