@@ -11,13 +11,14 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 import JsonEncoder
 
 class CTienda:
-    def __init__(self, pNombreTienda="", pDescripcionTienda="", pURLFotoTienda="", pUbicacionTienda="", pHorarioTienda="", pDuenoTienda="", pKeyValue=""):
+        def __init__(self, pNombreTienda="", pDescripcionTienda="", pURLFotoTienda="", pLongitud="", pLatitud="", pHorarioTienda="", pKeyDuenoTienda="", pKeyValue=""):
 		self.mNombreTienda = ""
 		self.mDescripcionTienda = ""
 		self.mURLFotoTienda = ""
-		self.mUbicacionTienda = ""
+		self.mLongitud = ""
+		self.mLatitud = ""
 		self.mHorarioTienda = ""
-		self.mDuenoTienda = ""
+		self.mKeyDuenoTienda = ""
 		self.mKeyValue = ""
 		if type(pNombreTienda) is str:
 			self.mNombreTienda = pNombreTienda
@@ -25,12 +26,14 @@ class CTienda:
 			self.mDescripcionTienda = pDescripcionTienda
 		if type(pURLFotoTienda) is str:
 			self.mURLFotoTienda = pURLFotoTienda
-		if type(pUbicacionTienda) is str:
-			self.mUbicacionTienda = pUbicacionTienda
+		if type(pLongitud) is str:
+			self.mLongitud = pLongitud
+		if type(pLatitud) is str:
+			self.mLatitud = pLatitud
 		if type(pHorarioTienda) is str:
 			self.mHorarioTienda = pHorarioTienda
-		if type(pDuenoTienda) is str:
-			self.mDuenoTienda = pDuenoTienda
+		if type(pKeyDuenoTienda) is str:
+			self.mKeyDuenoTienda = pKeyDuenoTienda
 		if type(pKeyValue) is str:
 			self.mKeyValue = pKeyValue
 
@@ -51,17 +54,17 @@ class CTienda:
 		if type(pURLFotoTienda) is str:
 			self.mURLFotoTienda = pURLFotoTienda
 			
-	def setUbicacionTienda(self, pUbicacionTienda = ""):
-		if type(pUbicacionTienda) is str:
-			self.mUbicacionTienda = pUbicacionTienda
+	def setLongitud(self, pLongitud = ""):
+		if type(pLongitud) is str:
+			self.mLongitud = pLongitud
 			
 	def setHorarioTienda(self, pHorarioTienda = ""):
 		if type(pHorarioTienda) is str:
 			self.mHorarioTienda = pHorarioTienda
 			
-	def setDuenoTienda(self, pDuenoTienda = ""):
-		if type(pDuenoTienda) is str:
-			self.mDuenoTienda = pDuenoTienda
+	def setKeyDuenoTienda(self, pKeyDuenoTienda = ""):
+		if type(pKeyDuenoTienda) is str:
+			self.mKeyDuenoTienda = pKeyDuenoTienda
 
 	def getNombreTienda(self):
 		return self.mNombreTienda
@@ -72,14 +75,14 @@ class CTienda:
 	def getURLFotoTienda(self):
 		return self.mURLFotoTienda
 		
-	def getUbicacionTienda(self):
-		return self.mUbicacionTienda
+	def getLongitud(self):
+		return self.mLongitud
 		
 	def getHorarioTienda(self):
 		return self.mHorarioTienda
 		
-	def getDuenoTienda(self):
-		return self.mDuenoTienda
+	def getKeyDuenoTienda(self):
+		return self.mKeyDuenoTienda
 
 	def jsonSerialize(self):
 		return JsonEncoder.JsonEncoder().serializeJson(self)

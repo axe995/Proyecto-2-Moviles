@@ -81,7 +81,7 @@ class GClienteCtrl:
 					if nombrereturnValue != "":
 						recClientes.mNombreCliente = nombrereturnValue
 					if correoreturnValue != "":
-						recClientes.mCorreoCliente = recClientes,correoreturnValue
+						recClientes.mCorreoCliente = correoreturnValue
 					if fechareturnValue != "":
 						recClientes.mUltimaFechaActividad = fechareturnValue
 					recClientes.put()

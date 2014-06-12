@@ -29,10 +29,12 @@ class Constantes:
 	mGMOperacionAgregaTie = "ATI"
 	mGMOperacionBorrarTie = "BTI"
 	mGMOperacionSeleccTie = "STI"
+	mGMOperacionUpdateTie = "UTI"
 	
 	#ModuloEtiqueta
 	mGMOperacionAgregaEtiqueta = "AEQ"
 	mGMOperacionSeleccEtiqueta = "SEQ"
+	mGMOperacionUpdateEtiqueta = "UEQ"
 	
 	#mModuloMercancia
 	mGMOperacionAgregaMerc = "AMC"

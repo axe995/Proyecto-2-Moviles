@@ -11,7 +11,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 import JsonEncoder
 
 class CEtiqueta:
-    def __init__(self, pNombreEtiqueta="", pKeyValue=""):
+        def __init__(self, pNombreEtiqueta="", pKeyValue=""):
 		self.mNombreEtiqueta = ""
 		self.mKeyValue = ""
 		if type(pNombreEtiqueta) is str:

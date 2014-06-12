@@ -77,9 +77,9 @@ class GDuenoCtrl:
 			for recDueno in qry:
 				if str(recDueno.key.id()) == keyValue:					
 					if nombrereturnValue != "":
-						recDueno.mNombreCliente = nombrereturnValue
+						recDueno.mNombreDueno = nombrereturnValue
 					if correoreturnValue != "":
-						recDueno.mCorreoCliente = recDueno,correoreturnValue
+						recDueno.mCorreoDueno = correoreturnValue
 					if residenciareturnValue != "":
 						recDueno.mResidenciaDueno = residenciareturnValue
 					if descripcionreturnValue != "":
