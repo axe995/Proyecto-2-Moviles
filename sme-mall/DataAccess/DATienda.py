@@ -9,51 +9,51 @@ Emanuel Avendano
 from google.appengine.ext import ndb
 
 class DATienda(ndb.Model):
-    _NombreTienda = ndb.StringProperty(indexed=False)
-	_DescripcionTienda = ndb.StringProperty(indexed=False)
-	_URLFotoTienda = ndb.StringProperty(indexed=False)
-	_UbicacionTienda = ndb.StringProperty(indexed=False)
-	_DuenoTienda = ndb.StringProperty(indexed=False)
-	_HorarioTienda = ndb.StringProperty(indexed=False)
+    mNombreTienda = ndb.StringProperty(indexed=True)
+	mDescripcionTienda = ndb.StringProperty(indexed=True)
+	mURLFotoTienda = ndb.StringProperty(indexed=True)
+	mUbicacionTienda = ndb.StringProperty(indexed=True)
+	mDuenoTienda = ndb.StringProperty(indexed=True)
+	mHorarioTienda = ndb.StringProperty(indexed=True)
 	
 	def setNombreTienda(self, pNombreTienda=""):
      if type(pNombreTienda) is str:
-     self._NombreTienda = pNombreTienda
+     self.mNombreTienda = pNombreTienda
 	 
 	def getNombreTienda(self):
-     return self._NombreTienda
+     return self.mNombreTienda
 	 
 	def setDescripcionTienda(self, pDescripcionTienda=""):
      if type(pDescripcionTienda) is str:
-     self._DescripcionTienda = pDescripcionTienda
+     self.mDescripcionTienda = pDescripcionTienda
 	 
 	def getDescripcionTienda(self):
-     return self._DescripcionTienda
+     return self.mDescripcionTienda
 	 
 	def setURLFotoTienda(self, pURLFotoTienda=""):
      if type(pURLFotoTienda) is str:
-     self._URLFotoTienda = pURLFotoTienda
+     self.mURLFotoTienda = pURLFotoTienda
 	 
 	def getURLFotoTienda(self):
-     return self._URLFotoTienda
+     return self.mURLFotoTienda
 	 
 	def setUbicacionTienda(self, pUbicacionTienda=""):
      if type(pUbicacionTienda) is str:
-     self._UbicacionTienda = pUbicacionTienda
+     self.mUbicacionTienda = pUbicacionTienda
 	 
 	def getUbicacionTienda(self):
-     return self._UbicacionTienda
+     return self.mUbicacionTienda
 	 
 	def setDuenoTienda(self, pDuenoTienda=""):
      if type(pDuenoTienda) is str:
-     self._DuenoTienda = pDuenoTienda
+     self.mDuenoTienda = pDuenoTienda
 	 
 	def getDuenoTienda(self):
-     return self._DuenoTienda
+     return self.mDuenoTienda
 	 
 	def setHorarioTienda(self, pHorarioTienda=""):
      if type(pHorarioTienda) is str:
-     self._HorarioTienda = pHorarioTienda
+     self.mHorarioTienda = pHorarioTienda
 	 
 	def getHorarioTienda(self):
-     return self._HorarioTienda
+     return self.mHorarioTienda

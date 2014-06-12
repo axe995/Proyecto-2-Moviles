@@ -9,11 +9,11 @@ Emanuel Avendano
 from google.appengine.ext import ndb
 
 class DATipoContacto(ndb.Model):
-	_NombreTipoC = ndb.StringProperty(indexed=False)
+	mNombreTipoC = ndb.StringProperty(indexed=True)
 	 
 	def setNombreTipoC(self, pNombreTipoC=""):
      if type(pNombreTipoC) is str:
-     self._NombreTipoC = pNombreTipoC
+     self.mNombreTipoC = pNombreTipoC
 	 
 	def getNombreTipoC(self):
-     return self._NombreTipoC
+     return self.mNombreTipoC

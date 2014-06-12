@@ -9,11 +9,11 @@ Emanuel Avendano
 from google.appengine.ext import ndb
 
 class DAContrato(ndb.Model):
-	_TipoContrato = ndb.StringProperty(indexed=False)
+	mTipoContrato = ndb.StringProperty(indexed=True)
 	 
 	def setTipoContrato(self, pTipoContrato=""):
 		if type(pTipoContrato) is str:
-			self._TipoContrato = pTipoContrato
+			self.mTipoContrato = pTipoContrato
 	 
 	def getTipoContrato(self):
-		return self._TipoContrato
+		return self.mTipoContrato

@@ -9,31 +9,31 @@ Emanuel Avendano
 from google.appengine.ext import ndb
 
 class DACliente(ndb.Model):
-    _NombreCliente = ndb.StringProperty(indexed=False)
-    _CorreoCliente = ndb.StringProperty(indexed=False)
-    _UltimaFechaActividad = ndb.StringProperty(indexed=False)
+    mNombreCliente = ndb.StringProperty(indexed=True)
+    mCorreoCliente = ndb.StringProperty(indexed=True)
+    mUltimaFechaActividad = ndb.StringProperty(indexed=True)
 
 
     def setNombreCliente(self, pNombreCliente=""):
      if type(pNombreCliente) is str:
-     self._NombreCliente = pNombreCliente
+     self.mNombreCliente = pNombreCliente
 
     def setCorreoCliente(self, pCorreoCliente=""):
      if type(pCorreoCliente) is str:
-     self._CorreoCliente = pCorreoCliente
+     self.mCorreoCliente = pCorreoCliente
 
     def setUltimaFechaActividad(self, pUltimaFechaActividad=""):
      if type(pUltimaFechaActividad) is str:
-     self._UltimaFechaActividad = UltimaFechaActividad
+     self.mUltimaFechaActividad = UltimaFechaActividad
 
     def getNombreCliente(self):
-     return self._NombreCliente
+     return self.mNombreCliente
 	
     def getCorreoCliente(self):
-     return self._CorreoCliente
+     return self.mCorreoCliente
 
     def getUltimaFechaActividadCliente(self):
-     return self._UltimaFechaActividad
+     return self.mUltimaFechaActividad
 
     def saveDS(self):
      self.put()

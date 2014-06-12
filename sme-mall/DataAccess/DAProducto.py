@@ -9,28 +9,28 @@ Emanuel Avendano
 from google.appengine.ext import ndb
 
 class DAProducto(ndb.Model):
-	_KeyMerc = ndb.StringProperty(indexed=True)
-    _CantidadDisponibleProd = ndb.IntegerProperty(indexed=False)
-	_PrecioUnitarioProd = ndb.IntegerProperty(indexed=False)
-	_FechaDevolucionProd = ndb.StringProperty(indexed=False)
+	mKeyMerc = ndb.StringProperty(indexed=True)
+    mCantidadDisponibleProd = ndb.IntegerProperty(indexed=True)
+	mPrecioUnitarioProd = ndb.IntegerProperty(indexed=True)
+	mFechaDevolucionProd = ndb.StringProperty(indexed=True)
 	
 	def setCantidadDisponibleProd(self, pCantidadDisponibleProd):
      if type(pCantidadDisponibleProd) is int:
-     self._CantidadDisponibleProd = pCantidadDisponibleProd
+     self.mCantidadDisponibleProd = pCantidadDisponibleProd
 	 
 	def getCantidadDisponibleProd(self):
-     return self._CantidadDisponibleProd
+     return self.mCantidadDisponibleProd
 	 
 	def setPrecioUnitarioProd(self, pPrecioUnitarioProd):
      if type(pPrecioUnitarioProd) is int:
-     self._PrecioUnitarioProd = pPrecioUnitarioProd
+     self.mPrecioUnitarioProd = pPrecioUnitarioProd
 	 
 	def getPrecioUnitarioProd(self):
-     return self._PrecioUnitarioProd
+     return self.mPrecioUnitarioProd
 	 
 	def setFechaDevolucionProd(self, pFechaDevolucionProd=""):
      if type(pFechaDevolucionProd) is str:
-     self._FechaDevolucionProd = pFechaDevolucionProd
+     self.mFechaDevolucionProd = pFechaDevolucionProd
 	 
 	def getFechaDevolucionProd(self):
-     return self._FechaDevolucionProd
+     return self.mFechaDevolucionProd

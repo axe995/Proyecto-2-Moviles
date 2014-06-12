@@ -9,13 +9,13 @@
 from google.appengine.ext import ndb
 
 class DAContactoXTienda(ndb.Model):
-	_KeyTipoC = ndb.StringProperty(indexed=True)
-	_KeyTienda = ndb.StringProperty(indexed=True)
-	_ValorC = ndb.StringProperty(indexed=False)
+	mKeyTipoC = ndb.StringProperty(indexed=True)
+	mKeyTienda = ndb.StringProperty(indexed=True)
+	mValorC = ndb.StringProperty(indexed=True)
 	
 	def setValorC(self, pValorC=""):
      if type(pValorC) is str:
-     self._ValorC = pValorC
+     self.mValorC = pValorC
 	 
 	def getValorC(self):
-     return self._ValorC
+     return self.mValorC

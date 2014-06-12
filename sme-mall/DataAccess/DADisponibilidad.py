@@ -9,11 +9,11 @@ Emanuel Avendano
 from google.appengine.ext import ndb
 
 class DADisponibilidad(ndb.Model):
-	_TipoDisponibilidad = ndb.StringProperty(indexed=False)
+	mTipoDisponibilidad = ndb.StringProperty(indexed=True)
 	 
 	def setTipoDisponibilidad(self, pTipoDisponibilidad=""):
 		if type(pTipoDisponibilidad) is str:
-			self._TipoDisponibilidad = pTipoDisponibilidad
+			self.mTipoDisponibilidad = pTipoDisponibilidad
 	 
 	def getTipoDisponibilidad(self):
-		return self._TipoDisponibilidad
+		return self.mTipoDisponibilidad

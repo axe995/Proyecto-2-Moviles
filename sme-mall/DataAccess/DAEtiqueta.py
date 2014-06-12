@@ -9,11 +9,11 @@ Emanuel Avendano
 from google.appengine.ext import ndb
 
 class DAEtiqueta(ndb.Model):
-    _NombreEtiqueta = ndb.StringProperty(indexed=False)
+    mNombreEtiqueta = ndb.StringProperty(indexed=True)
 	
 	def setNombreEtiqueta(self, pNombreEtiqueta=""):
      if type(pNombreEtiqueta) is str:
-     self._NombreEtiqueta = pNombreEtiqueta
+     self.mNombreEtiqueta = pNombreEtiqueta
 	 
 	def getNombreEtiqueta(self):
-     return self._NombreEtiqueta
+     return self.mNombreEtiqueta
