@@ -11,7 +11,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 import JsonEncoder
 
 class CServicio:
-    def __init__(self, pPrecioContrato="", pFechaInicioContrato="", pFechaLiberacionContrato="", pKeyMerc="", pKeyValue=""):
+        def __init__(self, pPrecioContrato="", pFechaInicioContrato="", pFechaLiberacionContrato="", pKeyMerc="", pKeyValue=""):
 		self.mPrecioContrato = ""
 		self.mFechaInicioContrato = ""
 		self.mFechaLiberacionContrato = ""
