@@ -14,6 +14,8 @@ from google.appengine.ext import ndb
 import Constantes
 import DADueno
 import CDueno
+import DATienda
+import CTienda
 
 #Gestion Dueño Control
 class GDuenoCtrl:
@@ -59,7 +61,10 @@ class GDuenoCtrl:
 					bandera = "1"
 		
 		if bandera == "0":
-			ddueno.put()
+			llave = ddueno.put()
+			dtienda = DATienda.DATienda()
+			dtienda.mKeyDuenoTienda = llave
+			dtienda.put()
 			self.mReturnValue = "1"
 		
 		
