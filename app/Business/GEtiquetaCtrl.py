@@ -37,8 +37,20 @@ class GEtiquetaCtrl:
 		self.mReturnValue = "0"
 		detiqueta = DAEtiqueta.DAEtiqueta()
 		detiqueta.mNombreEtiqueta = self.mRequest.get('GENOM')
-		detiqueta.put()
-		self.mReturnValue = "1"
+		detiqueta.mNombreEtiqueta = detiqueta.mNombreEtiqueta.upper()
+		bandera = "0"
+		qry = DAEtiqueta.DAEtiqueta.query()
+		# Ejecutar el query
+		if detiqueta.mNombreEtiqueta != "":
+			for recEtiqueta in qry:
+				if str(recEtiqueta.mNombreEtiqueta) == detiqueta.mNombreEtiqueta:					
+					bandera = "1"
+		
+		if bandera == "0":
+			detiqueta.put()
+			self.mReturnValue = "1"
+			
+		
 
 	def Select(self):
 		lstEtiqueta = []
