@@ -16,7 +16,7 @@ class Constantes:
 	mModuleCliente = "GC"
 	mModuleTienda = "GT"
 	mModuleEtiqueta = "GE"
-	mModuleMercancia = "GM" #falta
+	mModuleMercaderia = "GM" #falta
 	mModuleDueno = "GD"
 	mModuleContrato = "GCT"
 	mModuleDisponibilidad = "GDS"
@@ -43,6 +43,7 @@ class Constantes:
 	mGMOperacionAgregaMerc = "AMC"
 	mGMOperacionBorrarMerc = "BMC"
 	mGMOperacionSeleccMerc = "SMC"
+	mGMOperacionUpdateMerc = "UMC"
 
 	#mModuloDueno
 	mGMOperacionAgregaDueno = "ADU"
