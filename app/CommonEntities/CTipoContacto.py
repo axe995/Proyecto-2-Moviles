@@ -10,8 +10,8 @@ import sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 import JsonEncoder
 
-class CTipoC:
-    def __init__(self, pNombreTipoC="", pKeyValue=""):
+class CTipoContacto:
+        def __init__(self, pNombreTipoC="", pKeyValue=""):
 		self.mNombreTipoC = ""
 		self.mKeyValue = ""
 		if type(pNombreTipoC) is str:

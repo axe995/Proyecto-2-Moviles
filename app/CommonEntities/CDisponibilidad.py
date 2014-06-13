@@ -11,7 +11,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 import JsonEncoder
 
 class CDisponibilidad:
-    def __init__(self, pTipoDisponibilidad="", pKeyValue=""):
+        def __init__(self, pTipoDisponibilidad="", pKeyValue=""):
 		self.mTipoDisponibilidad = ""
 		self.mKeyValue = ""
 		if type(pTipoDisponibilidad) is str:

@@ -11,7 +11,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 import JsonEncoder
 
 class CContrato:
-    def __init__(self, pTipoContrato="", pKeyValue=""):
+        def __init__(self, pTipoContrato="", pKeyValue=""):
 		self.mTipoContrato = ""
 		self.mKeyValue = ""
 		if type(pTipoContrato) is str:

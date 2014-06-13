@@ -10,6 +10,9 @@ import Business.GClienteCtrl
 import Business.GDuenoCtrl
 import Business.GEtiquetaCtrl
 import Business.GTiendaCtrl
+import Business.GContratoCtrl
+import Business.GDisponibilidadCtrl
+import Business.GTipoContactoCtrl
 #import Business.GOrdenCtrl
 import Libraries.Constantes
 import Libraries.JsonEncoder
@@ -48,6 +51,24 @@ class Bridge:
 			self.mReturnValue = Libraries.JsonEncoder.JsonEncoder().serializeJson(self.mReturnValue)
 		if self.mModuloExec == Libraries.Constantes.Constantes().mModuleTienda:
 			self.mControl = Business.GTiendaCtrl.GTiendaCtrl(self.mRequest)
+			self.mControl.mOperation = self.mOperation
+			self.mControl.Execute()
+			self.mReturnValue['RETURNVALUE'] = self.mControl.GetValue()
+			self.mReturnValue = Libraries.JsonEncoder.JsonEncoder().serializeJson(self.mReturnValue)
+		if self.mModuloExec == Libraries.Constantes.Constantes().mModuleContrato:
+			self.mControl = Business.GContratoCtrl.GContratoCtrl(self.mRequest)
+			self.mControl.mOperation = self.mOperation
+			self.mControl.Execute()
+			self.mReturnValue['RETURNVALUE'] = self.mControl.GetValue()
+			self.mReturnValue = Libraries.JsonEncoder.JsonEncoder().serializeJson(self.mReturnValue)
+		if self.mModuloExec == Libraries.Constantes.Constantes().mModuleDisponibilidad:
+			self.mControl = Business.GDisponibilidadCtrl.GDisponibilidadCtrl(self.mRequest)
+			self.mControl.mOperation = self.mOperation
+			self.mControl.Execute()
+			self.mReturnValue['RETURNVALUE'] = self.mControl.GetValue()
+			self.mReturnValue = Libraries.JsonEncoder.JsonEncoder().serializeJson(self.mReturnValue)
+		if self.mModuloExec == Libraries.Constantes.Constantes().mModuleTipoContacto:
+			self.mControl = Business.GTipoContactoCtrl.GTipoContactoCtrl(self.mRequest)
 			self.mControl.mOperation = self.mOperation
 			self.mControl.Execute()
 			self.mReturnValue['RETURNVALUE'] = self.mControl.GetValue()
