@@ -15,6 +15,8 @@ from google.appengine.ext import ndb
 import Constantes
 import DACliente
 import CCliente
+import DABackpack
+import CBackpack
 
 #Gestion Ingrediente Control
 class GClienteCtrl:
@@ -56,7 +58,10 @@ class GClienteCtrl:
 					bandera = "1"
 		
 		if bandera == "0":
-			dcliente.put()
+			llave = dcliente.put()
+			dbackpack = DABackpack.DABackpack()
+			dbackpack.mKeyCliente = llave
+			dbackpack.put()
 			self.mReturnValue = "1"
 		
 		
