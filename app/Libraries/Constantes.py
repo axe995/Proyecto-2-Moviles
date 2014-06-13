@@ -22,6 +22,7 @@ class Constantes:
 	mModuleDisponibilidad = "GDS"
 	mModuleTipoContacto = "GTC"
 	mModuleProducto = "GPR"
+	mModuleServicio = "GSR"
 
 	#ModuloCliente
 	mGPOperacionAgregaCliente = "ACL"
@@ -75,6 +76,12 @@ class Constantes:
 	mGMOperacionBorrarProducto = "BPR"
 	mGMOperacionSeleccProducto = "SPR"
 	mGPOperacionUpdateProducto = "UPR"
+
+	#mModuleServicio
+	mGMOperacionAgregaServicio = "ASR"
+	mGMOperacionBorrarServicio = "BSR"
+	mGMOperacionSeleccServicio = "SSR"
+	mGPOperacionUpdateServicio = "USR"
 
 
 	
