@@ -11,14 +11,20 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 import JsonEncoder
 
 class CDueno:
-        def __init__(self, pNombreDueno="", pCorreoDueno="", pResidenciaDueno="", pDescripcionDueno="", pKeyValue=""):
+        def __init__(self, pNombreDueno="", pCorreoDueno="", pResidenciaDueno="", pDescripcionDueno="", pKeyAlbumProductos="", pKeyAlbumServicios="", pKeyValue=""):
 		self.mNombreDueno = ""
 		self.mCorreoDueno = ""
 		self.mResidenciaDueno = ""
 		self.mDescripcionDueno = ""
+		self.mKeyAlbumProductos = ""
+		self.mKeyAlbumServicios = ""
 		self.mKeyValue = ""
 		if type(pKeyValue) is str:
 			self.mKeyValue = pKeyValue
+		if type(pKeyAlbumProductos) is str:
+			self.mKeyAlbumProductos = pKeyAlbumProductos
+		if type(pKeyAlbumServicios) is str:
+			self.mKeyAlbumServicios = pKeyAlbumServicios
 		if type(pNombreDueno) is str:
 			self.mNombreDueno = pNombreDueno
 		if type(pCorreoDueno) is str:

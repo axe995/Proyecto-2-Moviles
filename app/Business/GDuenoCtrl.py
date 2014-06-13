@@ -24,6 +24,8 @@ class GDuenoCtrl:
 		self.mCorreoDueno = ""
 		self.mResidenciaDueno = ""
 		self.mDescripcionDueno = ""
+		self.mkeyAlbumProductos = ""
+		self.mkeyAlbumServicios = ""
 		self.mkeyValue = ""
 		self.mReturnValue = []
 
@@ -46,6 +48,8 @@ class GDuenoCtrl:
 		ddueno.mCorreoDueno = self.mRequest.get('GDCOR')
 		ddueno.mResidenciaDueno = self.mRequest.get('GDRES')
 		ddueno.mDescripcionDueno = self.mRequest.get('GDDES')
+		ddueno.mkeyAlbumProductos = self.mRequest.get('GDALP')
+		ddueno.mkeyAlbumServicios = self.mRequest.get('GDALS')
 		ddueno.put()
 		self.mReturnValue = "1"
 		
@@ -58,9 +62,9 @@ class GDuenoCtrl:
 		for recDueno in qry:
 			if keyValue != "":
 				if str(recDueno.key.id()) == keyValue:
-					lstDueno.append(CDueno.CDueno(str(recDueno.mNombreDueno),str(recDueno.mCorreoDueno),str(recDueno.mResidenciaDueno),str(recDueno.mDescripcionDueno),str(recDueno.key.id())).jsonSerialize())
+					lstDueno.append(CDueno.CDueno(str(recDueno.mNombreDueno),str(recDueno.mCorreoDueno),str(recDueno.mResidenciaDueno),str(recDueno.mDescripcionDueno),str(recDueno.mkeyAlbumProductos),str(recDueno.mkeyAlbumServicios),str(recDueno.key.id())).jsonSerialize())
 			else :
-				lstDueno.append(CDueno.CDueno(str(recDueno.mNombreDueno),str(recDueno.mCorreoDueno),str(recDueno.mResidenciaDueno),str(recDueno.mDescripcionDueno),str(recDueno.key.id())).jsonSerialize())
+				lstDueno.append(CDueno.CDueno(str(recDueno.mNombreDueno),str(recDueno.mCorreoDueno),str(recDueno.mResidenciaDueno),str(recDueno.mDescripcionDueno),str(recDueno.mkeyAlbumProductos),str(recDueno.mkeyAlbumServicios),str(recDueno.key.id())).jsonSerialize())
 		self.mReturnValue = lstDueno
 
 	def Update(self):
@@ -70,6 +74,8 @@ class GDuenoCtrl:
 		correoreturnValue = str(self.mRequest.get('GDCOR'))
 		residenciareturnValue = str(self.mRequest.get('GDRES'))
 		descripcionreturnValue = str(self.mRequest.get('GDDES'))
+		keyAlbumProductoValue = str(self.mRequest.get('GDALP'))
+		keyAlbumServicioValue = str(self.mRequest.get('GDALS'))
 		keyValue = str(self.mRequest.get('GDKEY'))
 		qry = DADueno.DADueno.query()
 		# Ejecutar el query
@@ -84,6 +90,10 @@ class GDuenoCtrl:
 						recDueno.mResidenciaDueno = residenciareturnValue
 					if descripcionreturnValue != "":
 						recDueno.mDescripcionDueno = descripcionreturnValue
+					if keyAlbumProductoValue != "":
+						recDueno.mkeyAlbumProductos = keyAlbumProductoValue
+					if keyAlbumServicioValue != "":
+						recDueno.mkeyAlbumServicios = keyAlbumServicioValue
 					recDueno.put()
 					self.mReturnValue = "1"
 		
