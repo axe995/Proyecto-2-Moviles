@@ -16,11 +16,12 @@ class Constantes:
 	mModuleCliente = "GC"
 	mModuleTienda = "GT"
 	mModuleEtiqueta = "GE"
-	mModuleMercaderia = "GM" #falta
+	mModuleMercaderia = "GM"
 	mModuleDueno = "GD"
 	mModuleContrato = "GCT"
 	mModuleDisponibilidad = "GDS"
 	mModuleTipoContacto = "GTC"
+	mModuleProducto = "GPR"
 
 	#ModuloCliente
 	mGPOperacionAgregaCliente = "ACL"
@@ -39,7 +40,7 @@ class Constantes:
 	mGMOperacionSeleccEtiqueta = "SEQ"
 	mGMOperacionUpdateEtiqueta = "UEQ"
 	
-	#mModuloMercancia
+	#mModuleMercaderia
 	mGMOperacionAgregaMerc = "AMC"
 	mGMOperacionBorrarMerc = "BMC"
 	mGMOperacionSeleccMerc = "SMC"
@@ -68,3 +69,12 @@ class Constantes:
 	mGMOperacionBorrarTipoContacto = "BTC"
 	mGMOperacionSeleccTipoContacto = "STC"
 	mGPOperacionUpdateTipoContacto = "UTC"
+
+	#mModuleProducto
+	mGMOperacionAgregaProducto = "APR"
+	mGMOperacionBorrarProducto = "BPR"
+	mGMOperacionSeleccProducto = "SPR"
+	mGPOperacionUpdateProducto = "UPR"
+
+
+	

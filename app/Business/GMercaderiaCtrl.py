@@ -36,7 +36,7 @@ class GMercaderiaCtrl:
 			self.Select()
 		if self.mOperation == Constantes.Constantes().mGMOperacionAgregaMerc:
 			self.Insert()
-		if self.mOperation == Constantes.Constantes().mGPOperacionUpdateMerc:
+		if self.mOperation == Constantes.Constantes().mGMOperacionUpdateMerc:
 			self.Update()
 		if self.mOperation == Constantes.Constantes().mGMOperacionBorrarMerc:
 			self.Delete()

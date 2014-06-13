@@ -13,7 +13,7 @@ class DADueno(ndb.Model):
     mCorreoDueno = ndb.StringProperty(indexed=True)
     mResidenciaDueno = ndb.StringProperty(indexed=True)
     mDescripcionDueno = ndb.StringProperty(indexed=True)
-	mKeyAlbumProductos = ndb.StringProperty(indexed=True)
-	mKeyAlbumServicios = ndb.StringProperty(indexed=True)
+    mKeyAlbumProductos = ndb.StringProperty(indexed=True)
+    mKeyAlbumServicios = ndb.StringProperty(indexed=True)
 
    
