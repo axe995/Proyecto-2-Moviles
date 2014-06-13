@@ -47,8 +47,17 @@ class GClienteCtrl:
 		localtime = datetime.datetime.utcnow()
 		localtime = localtime - datetime.timedelta(hours=6)
 		dcliente.mUltimaFechaActividad = localtime.strftime("%Y%m%d") + " " +localtime.time().strftime("%H%M%S")
-		dcliente.put()
-		self.mReturnValue = "1"
+		bandera = "0"
+		qry = DACliente.DACliente.query()
+		# Ejecutar el query
+		if dcliente.mCorreoCliente != "":
+			for recCliente in qry:
+				if str(recCliente.mCorreoCliente) == dcliente.mCorreoCliente:					
+					bandera = "1"
+		
+		if bandera == "0":
+			dcliente.put()
+			self.mReturnValue = "1"
 		
 		
 

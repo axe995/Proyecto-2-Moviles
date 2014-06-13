@@ -50,8 +50,17 @@ class GDuenoCtrl:
 		ddueno.mDescripcionDueno = self.mRequest.get('GDDES')
 		ddueno.mkeyAlbumProductos = self.mRequest.get('GDALP')
 		ddueno.mkeyAlbumServicios = self.mRequest.get('GDALS')
-		ddueno.put()
-		self.mReturnValue = "1"
+		bandera = "0"
+		qry = DADueno.DADueno.query()
+		# Ejecutar el query
+		if ddueno.mCorreoDueno != "":
+			for recDueno in qry:
+				if str(recDueno.mCorreoDueno) == ddueno.mCorreoDueno:					
+					bandera = "1"
+		
+		if bandera == "0":
+			ddueno.put()
+			self.mReturnValue = "1"
 		
 		
 
