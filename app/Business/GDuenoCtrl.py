@@ -71,9 +71,9 @@ class GDuenoCtrl:
 		for recDueno in qry:
 			if keyValue != "":
 				if str(recDueno.key.id()) == keyValue:
-					lstDueno.append(CDueno.CDueno(str(recDueno.mNombreDueno),str(recDueno.mCorreoDueno),str(recDueno.mResidenciaDueno),str(recDueno.mDescripcionDueno),str(recDueno.mkeyAlbumProductos),str(recDueno.mkeyAlbumServicios),str(recDueno.key.id())).jsonSerialize())
+					lstDueno.append(CDueno.CDueno(str(recDueno.mNombreDueno),str(recDueno.mCorreoDueno),str(recDueno.mResidenciaDueno),str(recDueno.mDescripcionDueno),str(recDueno.mKeyAlbumProductos),str(recDueno.mKeyAlbumServicios),str(recDueno.key.id())).jsonSerialize())
 			else :
-				lstDueno.append(CDueno.CDueno(str(recDueno.mNombreDueno),str(recDueno.mCorreoDueno),str(recDueno.mResidenciaDueno),str(recDueno.mDescripcionDueno),str(recDueno.mkeyAlbumProductos),str(recDueno.mkeyAlbumServicios),str(recDueno.key.id())).jsonSerialize())
+				lstDueno.append(CDueno.CDueno(str(recDueno.mNombreDueno),str(recDueno.mCorreoDueno),str(recDueno.mResidenciaDueno),str(recDueno.mDescripcionDueno),str(recDueno.mKeyAlbumProductos),str(recDueno.mKeyAlbumServicios),str(recDueno.key.id())).jsonSerialize())
 		self.mReturnValue = lstDueno
 
 	def Update(self):
