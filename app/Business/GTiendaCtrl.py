@@ -17,6 +17,9 @@ import CTienda
 import DAContactoXTienda
 import DATipoContacto
 import CContactoxTienda
+import DAEtiquetaXTienda
+import DAEtiqueta
+import CEtiqueta
 
 #Gestion Dueño Control
 class GTiendaCtrl:
@@ -49,6 +52,12 @@ class GTiendaCtrl:
 			self.DeleteContactoXTienda()
 		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccContactoxTienda:
 			self.SeleccionarContactos()
+		if self.mOperation == Constantes.Constantes().mGMOperacionAgregaEtiquetaxTienda:
+			self.AgregarEtiquetaXTienda()
+		if self.mOperation == Constantes.Constantes().mGMOperacionBorrarEtiquetaxTiendae:
+			self.DeleteEtiquetaXTienda()
+		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccEtiquetaxTienda:
+			self.SeleccionarEtiquetas()
 
 
 	def Insert(self):
@@ -174,3 +183,50 @@ class GTiendaCtrl:
 							if str(recTipoContacto.key.id()) == str(recContactoXTienda.mKeyTipoC):
 								lstContactoporTienda.append(CContactoxTienda.CContactoxTienda(str(recContactoXTienda.mValorC),str(recContactoXTienda.mKeyTienda),str(recContactoXTienda.mKeyTipoC),str(recTipoContacto.mNombreTipoC),str(recContactoXTienda.key.id())).jsonSerialize())
 			self.mReturnValue = lstContactoporTienda
+	
+	#EtiquetaXTienda
+	def AgregarEtiquetaXTienda(self):
+		self.mReturnValue = "0"
+		keyValueTienda = str(self.mRequest.get('GTKEY'))
+		KeyetiquetasreturnValue = str(self.mRequest.get('GTKET'))
+		daEtiquetaXTienda = DAEtiquetaXTienda.DAEtiquetaXTienda()
+		daEtiquetaXTienda.mKeyEtiqueta = KeyetiquetasreturnValue
+		daEtiquetaXTienda.mKeyTienda = keyValueTienda
+		bandera = "0"
+		qry = DAEtiquetaXTienda.DAEtiquetaXTienda.query()
+		# Ejecutar el query
+		if keyValueTienda != "" and KeyetiquetasreturnValue != "":
+			for recEtiquetaXTienda in qry:
+				if str(recEtiquetaXTienda.mKeyEtiqueta) == daEtiquetaXTienda.mKeyEtiqueta and str(recEtiquetaXTienda.mKeyTienda) == daEtiquetaXTienda.mKeyTienda:					
+					bandera = "1"
+		
+		if bandera == "0":
+			daEtiquetaXTienda.put()
+			self.mReturnValue = "1"
+			
+		
+	
+	def DeleteEtiquetaXTienda(self):
+		self.mReturnValue = "0"
+		keyValueTienda = str(self.mRequest.get('GTKEY'))
+		KeyetiquetasreturnValue = str(self.mRequest.get('GTKET'))
+		qry = DAEtiquetaXTienda.DAEtiquetaXTienda.query()
+		if keyValueTienda != "" and KeyetiquetasreturnValue != "":
+			for recEtiquetaxTienda in qry:
+				if str(recEtiquetaxTienda.mKeyEtiqueta) == KeyetiquetasreturnValue and str(recEtiquetaxTienda.mKeyTienda) == keyValueTienda:
+					self.mReturnValue = "1"
+					recEtiquetaxTienda.key.delete()
+	
+	def SeleccionarEtiquetas(self):
+		self.mReturnValue = "0"
+		lstEtiqueta = []
+		keyValueTienda = str(self.mRequest.get('GTKEY'))
+		qryEtiquetaxTienda= DAEtiquetaXTienda.DAEtiquetaXTienda.query()
+		qryEtiqueta= DAEtiqueta.DAEtiqueta.query()
+		if keyValueTienda != "":
+			for recEtiquetaXTienda in qryEtiquetaxTienda:
+				if str(recEtiquetaXTienda.mKeyTienda) == keyValueTienda:					
+					for recEtiqueta in qryEtiqueta:
+							if str(recEtiqueta.key.id()) == str(recEtiquetaXTienda.mKeyEtiqueta):
+								lstEtiqueta.append(CEtiqueta.CEtiqueta(str(recEtiqueta.mNombreEtiqueta),str(recEtiqueta.key.id())).jsonSerialize())
+			self.mReturnValue = lstEtiqueta

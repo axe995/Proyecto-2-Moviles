@@ -39,6 +39,9 @@ class Constantes:
 	mGMOperacionAgregaContactoxTienda = "ACT"
 	mGMOperacionBorrarContactoxTiendae = "BCT"
 	mGMOperacionSeleccContactoxTienda = "SCT"
+	mGMOperacionAgregaEtiquetaxTienda = "AET"
+	mGMOperacionBorrarEtiquetaxTiendae = "BET"
+	mGMOperacionSeleccEtiquetaxTienda = "SET"
 	
 	#ModuloEtiqueta
 	mGMOperacionAgregaEtiqueta = "AEQ"
