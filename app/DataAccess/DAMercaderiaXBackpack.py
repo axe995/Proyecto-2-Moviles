@@ -8,6 +8,6 @@
 
 from google.appengine.ext import ndb
 
-class DMercaderiaXBackpack(ndb.Model):
+class DAMercaderiaXBackpack(ndb.Model):
 	mKeyMerc = ndb.StringProperty(indexed=True)
 	mKeyBackpack = ndb.StringProperty(indexed=True)

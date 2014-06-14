@@ -17,6 +17,12 @@ import CBackpack
 import DATiendaXBackpack
 import DATienda
 import CTienda
+import DAMercaderia
+import CMercaderia
+import DAMercaderiaXBackpack
+import DAEtiqueta
+import CEtiqueta
+import DAEtiquetaXBackpack
 
 #Gestion Dueño Control
 class GBackpackCtrl:
@@ -44,6 +50,20 @@ class GBackpackCtrl:
 			self.DeleteTiendaxBackpack()
 		if self.mOperation == Constantes.Constantes().mGPOperacionSeleccTiendaxBackpack:
 			self.SeleccionarTiendas()
+		#mercaderia por backpack
+		if self.mOperation == Constantes.Constantes().mGPOperacionAgregarMercxBackpack:
+			self.AgregarMercaderiaXBackpack()
+		if self.mOperation == Constantes.Constantes().mGPOperacionBorrarMercxBackpack:
+			self.DeleteMercaderiaXBackpack()
+		if self.mOperation == Constantes.Constantes().mGPOperacionSeleccMercxBackpack:
+			self.SeleccionarMercaderia()
+		#etiquetas por backpack
+		if self.mOperation == Constantes.Constantes().mGPOperacionAgregarEtiquetaxBackpack:
+			self.AgregarEtiquetaXBackpack()
+		if self.mOperation == Constantes.Constantes().mGPOperacionBorrarEtiquetaxBackpack:
+			self.DeleteEtiquetaXBackpack()
+		if self.mOperation == Constantes.Constantes().mGPOperacionSeleccEtiquetaxBackpack:
+			self.SeleccionarEtiquetas()
 
 
 	def Insert(self):
@@ -144,5 +164,96 @@ class GBackpackCtrl:
 								lstTiendas.append(CTienda.CTienda(str(recTienda.mNombreTienda),str(recTienda.mDescripcionTienda),str(recTienda.mURLFotoTienda),str(recTienda.mLongitud),str(recTienda.mLatitud),str(recTienda.mHorarioTienda),str(recTienda.mKeyDuenoTienda),str(recTienda.key.id())).jsonSerialize())
 			self.mReturnValue = lstTiendas
 		
-
+	#MercaderiaXBackpack
+	def AgregarMercaderiaXBackpack(self):
+		self.mReturnValue = "0"
+		keyValuebackpack = str(self.mRequest.get('GBPKEY'))
+		KeymercaderiareturnValue = str(self.mRequest.get('GBPKMR'))
+		daMercaderiaXBackpack = DAMercaderiaXBackpack.DAMercaderiaXBackpack()
+		daMercaderiaXBackpack.mKeyMerc = KeymercaderiareturnValue
+		daMercaderiaXBackpack.mKeyBackpack = keyValuebackpack
+		bandera = "0"
+		qry = DAMercaderiaXBackpack.DAMercaderiaXBackpack.query()
+		# Ejecutar el query
+		if keyValuebackpack != "" and KeymercaderiareturnValue != "":
+			for recMercaderiaXBackpack in qry:
+				if str(recMercaderiaXBackpack.mKeyMerc) == daMercaderiaXBackpack.mKeyMerc and str(recMercaderiaXBackpack.mKeyBackpack) == daMercaderiaXBackpack.mKeyBackpack:					
+					bandera = "1"
+		
+		if bandera == "0":
+			daMercaderiaXBackpack.put()
+			self.mReturnValue = "1"
+			
+		
 	
+	def DeleteMercaderiaXBackpack(self):
+		self.mReturnValue = "0"
+		keyValuebackpack = str(self.mRequest.get('GBPKEY'))
+		KeymercaderiareturnValue = str(self.mRequest.get('GBPKMR'))
+		qry = DAMercaderiaXBackpack.DAMercaderiaXBackpack.query()
+		if keyValuebackpack != "" and KeymercaderiareturnValue != "":
+			for recBackpack in qry:
+				if str(recBackpack.mKeyMerc) == KeymercaderiareturnValue and str(recBackpack.mKeyBackpack) == keyValuebackpack:
+					self.mReturnValue = "1"
+					recBackpack.key.delete()
+	
+	def SeleccionarMercaderia(self):
+		self.mReturnValue = "0"
+		lstMercaderia = []
+		keyValuebackpack = str(self.mRequest.get('GBPKEY'))
+		qryBackpack= DAMercaderiaXBackpack.DAMercaderiaXBackpack.query()
+		qryMercaderia= DAMercaderia.DAMercaderia.query()
+		if keyValuebackpack != "":
+			for recMercaderiaXBackpack in qryBackpack:
+				if str(recMercaderiaXBackpack.mKeyBackpack) == keyValuebackpack:					
+					for recMercaderia in qryMercaderia:
+							if str(recMercaderia.key.id()) == str(recMercaderiaXBackpack.mKeyMerc):
+								lstMercaderia.append(CMercaderia.CMercaderia(str(recMercaderia.mNombreMerc),str(recMercaderia.mDescripcionMerc),str(recMercaderia.mURLFotoMerc),str(recMercaderia.mTipoMerc),str(recMercaderia.mKeyTienda),str(recMercaderia.mKeyContrato),str(recMercaderia.mKeyDisponibilidad),str(recMercaderia.key.id())).jsonSerialize())
+			self.mReturnValue = lstMercaderia
+			
+		#EtiquetaXBackpack
+	def AgregarEtiquetaXBackpack(self):
+		self.mReturnValue = "0"
+		keyValuebackpack = str(self.mRequest.get('GBPKEY'))
+		KeyetiquetasreturnValue = str(self.mRequest.get('GBPKET'))
+		daEtiquetaXBackpack = DAEtiquetaXBackpack.DAEtiquetaXBackpack()
+		daEtiquetaXBackpack.mKeyEtiqueta = KeyetiquetasreturnValue
+		daEtiquetaXBackpack.mKeyBackpack = keyValuebackpack
+		bandera = "0"
+		qry = DAEtiquetaXBackpack.DAEtiquetaXBackpack.query()
+		# Ejecutar el query
+		if keyValuebackpack != "" and KeyetiquetasreturnValue != "":
+			for recEtiquetaXBackpack in qry:
+				if str(recEtiquetaXBackpack.mKeyEtiqueta) == daEtiquetaXBackpack.mKeyEtiqueta and str(recEtiquetaXBackpack.mKeyBackpack) == daEtiquetaXBackpack.mKeyBackpack:					
+					bandera = "1"
+		
+		if bandera == "0":
+			daEtiquetaXBackpack.put()
+			self.mReturnValue = "1"
+			
+		
+	
+	def DeleteEtiquetaXBackpack(self):
+		self.mReturnValue = "0"
+		keyValuebackpack = str(self.mRequest.get('GBPKEY'))
+		KeyetiquetasreturnValue = str(self.mRequest.get('GBPKET'))
+		qry = DAEtiquetaXBackpack.DAEtiquetaXBackpack.query()
+		if keyValuebackpack != "" and KeyetiquetasreturnValue != "":
+			for recBackpack in qry:
+				if str(recBackpack.mKeyEtiqueta) == KeyetiquetasreturnValue and str(recBackpack.mKeyBackpack) == keyValuebackpack:
+					self.mReturnValue = "1"
+					recBackpack.key.delete()
+	
+	def SeleccionarEtiquetas(self):
+		self.mReturnValue = "0"
+		lstEtiqueta = []
+		keyValuebackpack = str(self.mRequest.get('GBPKEY'))
+		qryBackpack= DAEtiquetaXBackpack.DAEtiquetaXBackpack.query()
+		qryEtiqueta= DAEtiqueta.DAEtiqueta.query()
+		if keyValuebackpack != "":
+			for recEtiquetaXBackpack in qryBackpack:
+				if str(recEtiquetaXBackpack.mKeyBackpack) == keyValuebackpack:					
+					for recEtiqueta in qryEtiqueta:
+							if str(recEtiqueta.key.id()) == str(recEtiquetaXBackpack.mKeyEtiqueta):
+								lstEtiqueta.append(CEtiqueta.CEtiqueta(str(recEtiqueta.mNombreEtiqueta),str(recEtiqueta.key.id())).jsonSerialize())
+			self.mReturnValue = lstEtiqueta
