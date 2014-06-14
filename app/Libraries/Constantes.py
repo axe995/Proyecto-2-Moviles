@@ -37,7 +37,7 @@ class Constantes:
 	mGMOperacionSeleccTie = "STI"
 	mGMOperacionUpdateTie = "UTI"
 	mGMOperacionAgregaContactoxTienda = "ACT"
-	mGMOperacionBorrarContactoxTiendae = "BCT"
+	mGMOperacionBorrarContactoxTienda = "BCT"
 	mGMOperacionSeleccContactoxTienda = "SCT"
 	mGMOperacionAgregaEtiquetaxTienda = "AET"
 	mGMOperacionBorrarEtiquetaxTiendae = "BET"
@@ -53,6 +53,9 @@ class Constantes:
 	mGMOperacionBorrarMerc = "BMC"
 	mGMOperacionSeleccMerc = "SMC"
 	mGMOperacionUpdateMerc = "UMC"
+	mGMOperacionAgregaEtiquetaxMerc = "AEM"
+	mGMOperacionBorrarEtiquetaxMerc = "BEM"
+	mGMOperacionSeleccEtiquetaxMerc = "SEM"
 
 	#mModuloDueno
 	mGMOperacionAgregaDueno = "ADU"

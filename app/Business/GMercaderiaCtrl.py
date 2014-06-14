@@ -14,6 +14,9 @@ from google.appengine.ext import ndb
 import Constantes
 import DAMercaderia
 import CMercaderia
+import DAEtiquetaXMercaderia
+import DAEtiqueta
+import CEtiqueta
 
 #Gestion Mercaderia Control
 class GMercaderiaCtrl:
@@ -40,7 +43,12 @@ class GMercaderiaCtrl:
 			self.Update()
 		if self.mOperation == Constantes.Constantes().mGMOperacionBorrarMerc:
 			self.Delete()
-			
+		if self.mOperation == Constantes.Constantes().mGMOperacionAgregaEtiquetaxMerc:
+			self.AgregarEtiquetaXMercaderia()
+		if self.mOperation == Constantes.Constantes().mGMOperacionBorrarEtiquetaxMerc:
+			self.DeleteEtiquetaXMercaderia()
+		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccEtiquetaxMerc:
+			self.SeleccionarEtiquetas()
 
 	def Insert(self):
 		self.mReturnValue = "0"
@@ -116,3 +124,50 @@ class GMercaderiaCtrl:
 
 	def GetValue(self):
 		return self.mReturnValue
+	
+	#EtiquetaXMercaderia
+	def AgregarEtiquetaXMercaderia(self):
+		self.mReturnValue = "0"
+		keyValueMercaderia = str(self.mRequest.get('GMKEY'))
+		KeyetiquetasreturnValue = str(self.mRequest.get('GMKET'))
+		daEtiquetaXMercaderia = DAEtiquetaXMercaderia.DAEtiquetaXMercaderia()
+		daEtiquetaXMercaderia.mKeyEtiqueta = KeyetiquetasreturnValue
+		daEtiquetaXMercaderia.mKeyMercaderia = keyValueMercaderia
+		bandera = "0"
+		qry = DAEtiquetaXMercaderia.DAEtiquetaXMercaderia.query()
+		# Ejecutar el query
+		if keyValueMercaderia != "" and KeyetiquetasreturnValue != "":
+			for recEtiquetaXMercaderia in qry:
+				if str(recEtiquetaXMercaderia.mKeyEtiqueta) == daEtiquetaXMercaderia.mKeyEtiqueta and str(recEtiquetaXMercaderia.mKeyMercaderia) == daEtiquetaXMercaderia.mKeyMercaderia:					
+					bandera = "1"
+		
+		if bandera == "0":
+			daEtiquetaXMercaderia.put()
+			self.mReturnValue = "1"
+			
+		
+	
+	def DeleteEtiquetaXMercaderia(self):
+		self.mReturnValue = "0"
+		keyValueMercaderia = str(self.mRequest.get('GMKEY'))
+		KeyetiquetasreturnValue = str(self.mRequest.get('GMKET'))
+		qry = DAEtiquetaXMercaderia.DAEtiquetaXMercaderia.query()
+		if keyValueMercaderia != "" and KeyetiquetasreturnValue != "":
+			for recEtiquetaXMercaderia in qry:
+				if str(recEtiquetaXMercaderia.mKeyEtiqueta) == KeyetiquetasreturnValue and str(recEtiquetaXMercaderia.mKeyMercaderia) == keyValueMercaderia:
+					self.mReturnValue = "1"
+					recEtiquetaXMercaderia.key.delete()
+	
+	def SeleccionarEtiquetas(self):
+		self.mReturnValue = "0"
+		lstEtiqueta = []
+		keyValueMercaderia = str(self.mRequest.get('GMKEY'))
+		qryEtiquetaXMercaderia= DAEtiquetaXMercaderia.DAEtiquetaXMercaderia.query()
+		qryEtiqueta= DAEtiqueta.DAEtiqueta.query()
+		if keyValueMercaderia != "":
+			for recEtiquetaXMercaderia in qryEtiquetaXMercaderia:
+				if str(recEtiquetaXMercaderia.mKeyMercaderia) == keyValueMercaderia:					
+					for recEtiqueta in qryEtiqueta:
+							if str(recEtiqueta.key.id()) == str(recEtiquetaXMercaderia.mKeyEtiqueta):
+								lstEtiqueta.append(CEtiqueta.CEtiqueta(str(recEtiqueta.mNombreEtiqueta),str(recEtiqueta.key.id())).jsonSerialize())
+			self.mReturnValue = lstEtiqueta

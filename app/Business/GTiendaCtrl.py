@@ -48,7 +48,7 @@ class GTiendaCtrl:
 			self.Delete()
 		if self.mOperation == Constantes.Constantes().mGMOperacionAgregaContactoxTienda:
 			self.AgregarContactoXTienda()
-		if self.mOperation == Constantes.Constantes().mGMOperacionBorrarContactoxTiendae:
+		if self.mOperation == Constantes.Constantes().mGMOperacionBorrarContactoxTienda:
 			self.DeleteContactoXTienda()
 		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccContactoxTienda:
 			self.SeleccionarContactos()
