@@ -36,6 +36,9 @@ class Constantes:
 	mGMOperacionBorrarTie = "BTI"
 	mGMOperacionSeleccTie = "STI"
 	mGMOperacionUpdateTie = "UTI"
+	mGMOperacionAgregaContactoxTienda = "ACT"
+	mGMOperacionBorrarContactoxTiendae = "BCT"
+	mGMOperacionSeleccContactoxTienda = "SCT"
 	
 	#ModuloEtiqueta
 	mGMOperacionAgregaEtiqueta = "AEQ"

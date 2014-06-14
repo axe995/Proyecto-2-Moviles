@@ -14,6 +14,9 @@ from google.appengine.ext import ndb
 import Constantes
 import DATienda
 import CTienda
+import DAContactoXTienda
+import DATipoContacto
+import CContactoxTienda
 
 #Gestion Dueño Control
 class GTiendaCtrl:
@@ -40,6 +43,12 @@ class GTiendaCtrl:
 			self.Update()
 		if self.mOperation == Constantes.Constantes().mGMOperacionBorrarTie:
 			self.Delete()
+		if self.mOperation == Constantes.Constantes().mGMOperacionAgregaContactoxTienda:
+			self.AgregarContactoXTienda()
+		if self.mOperation == Constantes.Constantes().mGMOperacionBorrarContactoxTiendae:
+			self.DeleteContactoXTienda()
+		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccContactoxTienda:
+			self.SeleccionarContactos()
 
 
 	def Insert(self):
@@ -116,3 +125,52 @@ class GTiendaCtrl:
 
 	def GetValue(self):
 		return self.mReturnValue
+		
+	#ContactoXTienda
+	def AgregarContactoXTienda(self):
+		self.mReturnValue = "0"
+		keyValueTienda = str(self.mRequest.get('GTKEY'))
+		keyValueTipoContacto = str(self.mRequest.get('GTCKEY'))
+		ValueContacto = str(self.mRequest.get('GTVACO'))
+		daContactoXTienda = DAContactoXTienda.DAContactoXTienda()
+		daContactoXTienda.mKeyTipoC = keyValueTipoContacto
+		daContactoXTienda.mKeyTienda = keyValueTienda
+		daContactoXTienda.mValorC = ValueContacto
+		bandera = "0"
+		qry = DAContactoXTienda.DAContactoXTienda.query()
+		# Ejecutar el query
+		if keyValueTienda != "" and keyValueTipoContacto != "":
+			for recContactoXTienda in qry:
+				if str(recContactoXTienda.mKeyTipoC) == daContactoXTienda.mKeyTipoC and str(recContactoXTienda.mKeyTienda) == daContactoXTienda.mKeyTienda:					
+					bandera = "1"
+		
+		if bandera == "0":
+			daContactoXTienda.put()
+			self.mReturnValue = "1"
+			
+		
+	
+	def DeleteContactoXTienda(self):
+		self.mReturnValue = "0"
+		keyValueTienda = str(self.mRequest.get('GTKEY'))
+		keyValueTipoContacto = str(self.mRequest.get('GTCKEY'))
+		qry = DAContactoXTienda.DAContactoXTienda.query()
+		if keyValueTienda != "" and keyValueTipoContacto != "":
+			for recTienda in qry:
+				if str(recTienda.mKeyTipoC) == keyValueTipoContacto and str(recTienda.mKeyTienda) == keyValueTienda:
+					self.mReturnValue = "1"
+					recTienda.key.delete()
+	
+	def SeleccionarContactos(self):
+		self.mReturnValue = "0"
+		lstContactoporTienda = []
+		keyValueTienda = str(self.mRequest.get('GTKEY'))
+		qryContactoxTienda= DAContactoXTienda.DAContactoXTienda.query()
+		qryTipoContacto= DATipoContacto.DATipoContacto.query()
+		if keyValueTienda != "":
+			for recContactoXTienda in qryContactoxTienda:
+				if str(recContactoXTienda.mKeyTienda) == keyValueTienda:					
+					for recTipoContacto in qryTipoContacto:
+							if str(recTipoContacto.key.id()) == str(recContactoXTienda.mKeyTipoC):
+								lstContactoporTienda.append(CContactoxTienda.CContactoxTienda(str(recContactoXTienda.mValorC),str(recContactoXTienda.mKeyTienda),str(recContactoXTienda.mKeyTipoC),str(recTipoContacto.mNombreTipoC),str(recTipoContacto.key.id())).jsonSerialize())
+			self.mReturnValue = lstContactoporTienda
