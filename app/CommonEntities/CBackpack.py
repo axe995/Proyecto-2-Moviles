@@ -11,12 +11,12 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'Libraries'))
 import JsonEncoder
 
 class CBackpack:
-    def __init__(self, pKeyCliente="", pKeyValue=""):
+        def __init__(self, pKeyCliente="", pKeyValue=""):
 		self.mKeyCliente = ""
 		self.mKeyValue = ""
 		
 		if type(pKeyCliente) is str:
-			self.mKeyValue = pKeyValue
+			self.mKeyCliente = pKeyCliente
 		if type(pKeyValue) is str:
 			self.mKeyValue = pKeyValue
 

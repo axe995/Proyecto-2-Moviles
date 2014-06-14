@@ -6,4 +6,4 @@
 #David Montero
 #Emanuel Avendano
 
-__all__ = ["GClienteCtrl","GDuenoCtrl","GEtiquetaCtrl","GTiendaCtrl","GContratoCtrl","GDisponibilidadCtrl","GTipoContactoCtrl","GMercaderiaCtrl","GProductoCtrl","GServicioCtrl"]
+__all__ = ["GClienteCtrl","GDuenoCtrl","GEtiquetaCtrl","GTiendaCtrl","GContratoCtrl","GDisponibilidadCtrl","GTipoContactoCtrl","GMercaderiaCtrl","GProductoCtrl","GServicioCtrl","GBackpackCtrl"]

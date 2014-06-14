@@ -23,6 +23,7 @@ class Constantes:
 	mModuleTipoContacto = "GTC"
 	mModuleProducto = "GPR"
 	mModuleServicio = "GSR"
+	mModuleBackpack = "GBP"
 
 	#ModuloCliente
 	mGPOperacionAgregaCliente = "ACL"
@@ -83,5 +84,11 @@ class Constantes:
 	mGMOperacionSeleccServicio = "SSR"
 	mGPOperacionUpdateServicio = "USR"
 
-
-	
+        #mModuleBackpack
+	mGMOperacionAgregaBackpack = "ABP"
+	mGMOperacionBorrarBackpack = "BBP"
+	mGMOperacionSeleccBackpack = "SBP"
+	mGPOperacionUpdateBackpack = "UBP"
+	mGPOperacionAgregarTiendaxBackpack = "ATB"
+	mGPOperacionBorrarTiendaxBackpack = "BTB"
+        mGPOperacionSeleccTiendaxBackpack = "STB"
