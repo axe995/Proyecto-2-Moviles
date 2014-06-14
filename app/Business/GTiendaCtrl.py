@@ -141,7 +141,7 @@ class GTiendaCtrl:
 		# Ejecutar el query
 		if keyValueTienda != "" and keyValueTipoContacto != "":
 			for recContactoXTienda in qry:
-				if str(recContactoXTienda.mKeyTipoC) == daContactoXTienda.mKeyTipoC and str(recContactoXTienda.mKeyTienda) == daContactoXTienda.mKeyTienda:					
+				if str(recContactoXTienda.mKeyTipoC) == daContactoXTienda.mKeyTipoC and str(recContactoXTienda.mKeyTienda) == daContactoXTienda.mKeyTienda and str(recContactoXTienda.mValorC) == daContactoXTienda.mValorC:					
 					bandera = "1"
 		
 		if bandera == "0":
@@ -172,5 +172,5 @@ class GTiendaCtrl:
 				if str(recContactoXTienda.mKeyTienda) == keyValueTienda:					
 					for recTipoContacto in qryTipoContacto:
 							if str(recTipoContacto.key.id()) == str(recContactoXTienda.mKeyTipoC):
-								lstContactoporTienda.append(CContactoxTienda.CContactoxTienda(str(recContactoXTienda.mValorC),str(recContactoXTienda.mKeyTienda),str(recContactoXTienda.mKeyTipoC),str(recTipoContacto.mNombreTipoC),str(recTipoContacto.key.id())).jsonSerialize())
+								lstContactoporTienda.append(CContactoxTienda.CContactoxTienda(str(recContactoXTienda.mValorC),str(recContactoXTienda.mKeyTienda),str(recContactoXTienda.mKeyTipoC),str(recTipoContacto.mNombreTipoC),str(recContactoXTienda.key.id())).jsonSerialize())
 			self.mReturnValue = lstContactoporTienda
