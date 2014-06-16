@@ -23,7 +23,6 @@ class Constantes:
 	mModuleTipoContacto = "GTC"
 	mModuleProducto = "GPR"
 	mModuleServicio = "GSR"
-	mModuleBackpack = "GBP"
 
 	#ModuloCliente
 	mGPOperacionAgregaCliente = "ACL"
@@ -35,15 +34,15 @@ class Constantes:
 	mGMOperacionAgregaTie = "ATI"
 	mGMOperacionBorrarTie = "BTI"
 	mGMOperacionSeleccTie = "STI"
+	mGMOperacionSeleccTie2 = "STI2"
 	mGMOperacionUpdateTie = "UTI"
-	mGMOperacionAgregaContactoxTienda = "ACT"
-	mGMOperacionBorrarContactoxTiendae = "BCT"
-	mGMOperacionSeleccContactoxTienda = "SCT"
 	
 	#ModuloEtiqueta
 	mGMOperacionAgregaEtiqueta = "AEQ"
 	mGMOperacionSeleccEtiqueta = "SEQ"
 	mGMOperacionUpdateEtiqueta = "UEQ"
+	mGMOperacionInsertaEtiqueta = "IEQ"
+	mGMOperacionSeleccionaEtiqueta 	= "OEQ"
 	
 	#mModuleMercaderia
 	mGMOperacionAgregaMerc = "AMC"
@@ -55,6 +54,7 @@ class Constantes:
 	mGMOperacionAgregaDueno = "ADU"
 	mGMOperacionBorrarDueno = "BDU"
 	mGMOperacionSeleccDueno = "SDU"
+	mGMOperacionSeleccDueno2 = "SDU2"
 	mGPOperacionUpdateDueno = "UDU"
 
 	#mModulosContrato
@@ -79,25 +79,15 @@ class Constantes:
 	mGMOperacionAgregaProducto = "APR"
 	mGMOperacionBorrarProducto = "BPR"
 	mGMOperacionSeleccProducto = "SPR"
+	mGMOperacionSeleccProducto2 = "SPR2"
 	mGPOperacionUpdateProducto = "UPR"
 
 	#mModuleServicio
 	mGMOperacionAgregaServicio = "ASR"
 	mGMOperacionBorrarServicio = "BSR"
 	mGMOperacionSeleccServicio = "SSR"
+	mGMOperacionSeleccServicio2 = "SSR2"
 	mGPOperacionUpdateServicio = "USR"
 
-        #mModuleBackpack
-	mGMOperacionAgregaBackpack = "ABP"
-	mGMOperacionBorrarBackpack = "BBP"
-	mGMOperacionSeleccBackpack = "SBP"
-	mGPOperacionUpdateBackpack = "UBP"
-	mGPOperacionAgregarTiendaxBackpack = "ATB"
-	mGPOperacionBorrarTiendaxBackpack = "BTB"
-        mGPOperacionSeleccTiendaxBackpack = "STB"
-        mGPOperacionAgregarMercxBackpack = "AMB"
-	mGPOperacionBorrarMercxBackpack = "BMB"
-        mGPOperacionSeleccMercxBackpack = "SMB"
-        mGPOperacionAgregarEtiquetaxBackpack = "AEB"
-	mGPOperacionBorrarEtiquetaxBackpack = "BEB"
-        mGPOperacionSeleccEtiquetaxBackpack = "SEB"
+
+	

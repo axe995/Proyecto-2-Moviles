@@ -64,9 +64,9 @@ class GMercaderiaCtrl:
 		for recMerc in qry:
 			if keyValue != "":
 				if str(recMerc.key.id()) == keyValue:
-					lstMerc.append(CMercaderia.CMercaderia(str(recMerc.mNombreMerc),str(recMerc.mDescripcionMerc),str(recMerc.mURLFotoMerc),str(recMerc.mTipoMerc),str(recMerc.mKeyTienda),str(recMerc.mKeyContrato),str(recMerc.mKeyDisponibilidad),str(recMerc.key.id())).jsonSerialize())
+					lstMerc.append(CMercaderia.CMercaderia(str(recMerc.mNombreMerc),str(recMerc.mDescripcionMerc),str(recMerc.mURLFotoMerc),str(recMerc.mTipoMerc),str(recMerc.llaveTienda),str(recMerc.llaveContrato),str(recMerc.llaveDisponib),str(recMerc.key.id())).jsonSerialize())
 			else :
-				lstMerc.append(CMercaderia.CMercaderia(str(recMerc.mNombreMerc),str(recMerc.mDescripcionMerc),str(recMerc.mURLFotoMerc),str(recMerc.mTipoMerc),str(recMerc.mKeyTienda),str(recMerc.mKeyContrato),str(recMerc.mKeyDisponibilidad),str(recMerc.key.id())).jsonSerialize())
+				lstMerc.append(CMercaderia.CMercaderia(str(recMerc.mNombreMerc),str(recMerc.mDescripcionMerc),str(recMerc.mURLFotoMerc),str(recMerc.mTipoMerc),str(recMerc.llaveTienda),str(recMerc.llaveContrato),str(recMerc.llaveDisponib),str(recMerc.key.id())).jsonSerialize())
 		self.mReturnValue = lstMerc
 
 	def Update(self):
@@ -105,7 +105,7 @@ class GMercaderiaCtrl:
 
 	def Delete(self):
 		self.mReturnValue = "0"
-		keyValue = str(self.mRequest.get('GDKEY'))
+		keyValue = str(self.mRequest.get('GMKEY'))
 		qry = DAMercaderia.DAMercaderia.query()
 		if keyValue != "":
 			for recMercaderia in qry:

@@ -35,6 +35,8 @@ class GDuenoCtrl:
 		self.mOperation = str(self.mRequest.get("EXECOP"))
 		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccDueno:
 			self.Select()
+		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccDueno2:
+			self.Select2()
 		if self.mOperation == Constantes.Constantes().mGMOperacionAgregaDueno:
 			self.Insert()
 		if self.mOperation == Constantes.Constantes().mGPOperacionUpdateDueno:
@@ -63,13 +65,25 @@ class GDuenoCtrl:
 		if bandera == "0":
 			llave = ddueno.put()
 			dtienda = DATienda.DATienda()
-			dtienda.mKeyDuenoTienda = llave
+			dtienda.mKeyDuenoTienda = str(llave.id())
 			dtienda.put()
 			self.mReturnValue = "1"
 		
 		
 
 	def Select(self):
+		lstDueno = []
+		keyValue = str(self.mRequest.get('GDKEY'))
+		qry = DADueno.DADueno.query()
+		for recDueno in qry:
+			if keyValue != "":
+				if str(recDueno.mCorreoDueno) == keyValue:
+					lstDueno.append(CDueno.CDueno(str(recDueno.mNombreDueno),str(recDueno.mCorreoDueno),str(recDueno.mResidenciaDueno),str(recDueno.mDescripcionDueno),str(recDueno.mKeyAlbumProductos),str(recDueno.mKeyAlbumServicios),str(recDueno.key.id())).jsonSerialize())
+			else :
+				lstDueno.append(CDueno.CDueno(str(recDueno.mNombreDueno),str(recDueno.mCorreoDueno),str(recDueno.mResidenciaDueno),str(recDueno.mDescripcionDueno),str(recDueno.mKeyAlbumProductos),str(recDueno.mKeyAlbumServicios),str(recDueno.key.id())).jsonSerialize())
+		self.mReturnValue = lstDueno
+
+	def Select2(self):
 		lstDueno = []
 		keyValue = str(self.mRequest.get('GDKEY'))
 		qry = DADueno.DADueno.query()
@@ -95,7 +109,7 @@ class GDuenoCtrl:
 		# Ejecutar el query
 		if keyValue != "":
 			for recDueno in qry:
-				if str(recDueno.key.id()) == keyValue:					
+				if str(recDueno.mCorreoDueno) == keyValue:					
 					if nombrereturnValue != "":
 						recDueno.mNombreDueno = nombrereturnValue
 					if correoreturnValue != "":
