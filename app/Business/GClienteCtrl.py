@@ -16,6 +16,7 @@ import Constantes
 import DACliente
 import CCliente
 import DABackpack
+import CBackpack
 
 #Gestion Ingrediente Control
 class GClienteCtrl:
@@ -58,9 +59,9 @@ class GClienteCtrl:
 		
 		if bandera == "0":
 			llave = dcliente.put()
-			dabackpack = DABackpack.DABackpack()
-			dabackpack.mKeyCliente = str(llave.id())
-			dabackpack.put()
+			dbackpack = DABackpack.DABackpack()
+			dbackpack.mKeyCliente = llave
+			dbackpack.put()
 			self.mReturnValue = "1"
 		
 		
@@ -71,7 +72,7 @@ class GClienteCtrl:
 		qry = DACliente.DACliente.query()
 		for recClientes in qry:
 			if keyValue != "":
-				if str(recClientes.mCorreoCliente) == keyValue:
+				if str(recClientes.key.id()) == keyValue:
 					lstClientes.append(CCliente.CCliente(str(recClientes.mNombreCliente),str(recClientes.mCorreoCliente),str(recClientes.mUltimaFechaActividad),str(recClientes.key.id())).jsonSerialize())
 			else :
 				lstClientes.append(CCliente.CCliente(str(recClientes.mNombreCliente),str(recClientes.mCorreoCliente),str(recClientes.mUltimaFechaActividad),str(recClientes.key.id())).jsonSerialize())

@@ -16,6 +16,7 @@ import Business.GTipoContactoCtrl
 import Business.GMercaderiaCtrl
 import Business.GProductoCtrl
 import Business.GServicioCtrl
+import Business.GBackpackCtrl
 #import Business.GOrdenCtrl
 import Libraries.Constantes
 import Libraries.JsonEncoder
@@ -90,6 +91,12 @@ class Bridge:
 			self.mReturnValue = Libraries.JsonEncoder.JsonEncoder().serializeJson(self.mReturnValue)
 		if self.mModuloExec == Libraries.Constantes.Constantes().mModuleServicio:
 			self.mControl = Business.GServicioCtrl.GServicioCtrl(self.mRequest)
+			self.mControl.mOperation = self.mOperation
+			self.mControl.Execute()
+			self.mReturnValue['RETURNVALUE'] = self.mControl.GetValue()
+			self.mReturnValue = Libraries.JsonEncoder.JsonEncoder().serializeJson(self.mReturnValue)
+		if self.mModuloExec == Libraries.Constantes.Constantes().mModuleBackpack:
+			self.mControl = Business.GBackpackCtrl.GBackpackCtrl(self.mRequest)
 			self.mControl.mOperation = self.mOperation
 			self.mControl.Execute()
 			self.mReturnValue['RETURNVALUE'] = self.mControl.GetValue()
