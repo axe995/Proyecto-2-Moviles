@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://getbootstrap.com/examples/starter-template/ -->
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="img/favicon.ico">
+
+    <title>SME MALL CR</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/formulario-template.css" rel="stylesheet">
+
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+    <style type="text/css">
+        body { background: #252525; }
+    </style>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>window["_GOOG_TRANS_EXT_VER"] = "1";</script>
+    <script>
+
+    var WSURL = "https://complete-trees-607.appspot.com/";
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+      //crearAlbumProductos();
+      //crearAlbumServicios();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      //document.getElementById('status').innerHTML = 'Please log ' +
+       //'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      //document.getElementById('status').innerHTML = 'Please log ' +
+      //  'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '456801631122129',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.0' // use version 2.0
+  });
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  function crearAlbumProductos(){
+    FB.api('/me/albums', 'post',
+    {
+        name: 'Productos',
+        message: 'Productos de la tienda'
+    },
+    function(response) {
+        // id album
+    }
+    );
+  }
+
+  function crearAlbumServicios(){
+    FB.api('/me/albums', 'post',
+    {
+        name: 'Servicios',
+        message: 'Servicios de la tienda'
+    },
+    function(response) {
+         // id album
+    }
+    );
+  }
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    //console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me/?fields=name,email', function(response) {
+      console.log('Successful login for: ' + response.name + " - "  + response.email);
+      setCookie("useremail",response.email,1);
+      insertCliente(response.name.replace("ñ", "n"),response.email);
+      //window.location = "https://smemallcr.appspot.com/HTML/desktop.html";
+    });
+  }
+
+  function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toGMTString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+  }
+
+  function insertCliente(strNombreDueno, strCorreoDueno){
+    var parametros = "EXECOP=ACL&MOD=GC";
+    var strGMNOM = "&GCNOM=" + strNombreDueno;
+    var strGMDSC = "&GCCOR=" + strCorreoDueno;
+    // Ejecutar la insercion
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+    }
+  else
+    {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+        var mainJson = jQuery.parseJSON(xmlhttp.responseText);
+        if (mainJson.RETURNVALUE == "1"){ window.location = "../HTML/desktop.html"; }
+        else if(mainJson.RETURNVALUE == "0"){ window.location = "../HTML/desktop.html"; }
+        else { alert("Operacion desconocida por el servidor."); }
+      }    
+    }
+    xmlhttp.open("GET",WSURL + "/?"+ parametros + strGMNOM + strGMDSC,true);
+    xmlhttp.send();
+  }
+</script>
+    </head>
+
+    <body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=456801631122129&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        
+        <div class="container">
+             <!-- START THE FEATURETTES -->
+            <hr class="featurette-divider">
+
+            <div class="row text-center">
+                <img class="img-rounded img-responsive center-block" src="img/logo.png" alt="Generic placeholder image" >
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row text-center">
+                <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" onlogin="checkLoginState();"></div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <!-- /END THE FEATURETTES -->
+
+
+            <!-- FOOTER -->
+             <div class="row text-center">
+                <footer>
+                  <p style="color:white;">&copy; 2014 SMEMall CR Instituto Tecnológico de Costa Rica. &middot; <a href="">Privacy</a> &middot; <a href="">Terms</a></p>
+                </footer>
+            </div>
+           
+        </div><!-- /.container -->
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+  
+    </body>
+</html>

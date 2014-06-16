@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SME MALL CR</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+    <link href="../css/headerStyle.css" rel="stylesheet">
+    <link href="../css/flipY.css" rel="stylesheet">
+    <link href="../css/form.css" rel="stylesheet">
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApMLHvNRQs10hea76W7TNB04P3D9Q38LM&sensor=SET_TO_TRUE_OR_FALSE">
+    </script>
+    <link rel="shortcut icon" href="img/favicon.ico">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="#" id="nombreCliente">Cliente</a>
+                </li>
+                <li><a onclick="LoadDesktop();">Busqueda</a>
+                </li>
+                <li><a >Contratar</a>
+                </li>
+                <li><a >Backpack</a>
+                </li>
+                <!--li><a onclick="LogOut()">Salir / Log Out</a>
+                </li-->
+            </ul>
+        </div>
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+
+            <div id="cssanimation">
+                <div id="animationbox">
+                    <span id="menu-toggle" class="glyphicon glyphicon glyphicon-th-list"></span>
+                    SME MALL CR
+                </div>
+            </div>
+
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="page-content inset">
+                <div class="invisible-banner"></div>
+                    <div id="dinamicContent">
+                    </div>
+            </div>
+
+            <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Descripción</h4>
+                  </div>
+                  <div class="modal-body" id="modalBody">
+                        <div class="progress progress-striped active">
+                          <div class="progress-bar"  role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                            <span class="sr-only">100% Complete</span>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!--button type="button" class="btn btn-primary">Save changes</button-->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="//connect.facebook.net/en_US/all.js"></script>
+    <script src="../js/jquery-1.10.2.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../js/desktop.js"></script>
+
+    <input id="userEmail" type="hidden" value="" />
+
+
+    <!-- Custom JavaScript for the Menu Toggle -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+    });
+    </script>
+</body>
+
+</html>
