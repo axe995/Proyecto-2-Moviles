@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+    <link href="../css/headerStyle.css" rel="stylesheet">
+    <link href="../css/flipY.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" id="google-font-selector" rel="stylesheet" type="text/css">
+    <link href="../css/form.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <form id="form" class="form" name="minifigureadd" method="post" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8" autocomplete>
+            <div class="content">
+            <h2 class="section" style="color:#fff;"><div class="edit-options"><div class="edit-section"></div><div class="delete-section"></div></div>Información Personal</h2>
+            <div id="section1" >
+                <div class="field"><label for="strNombre">Nombre Completo</label><input type="text" id="strNombre" name="strNombre" size="25" placeholder="Digite su Nombre" required></div>
+                <div class="field"><label for="strCorreo">Correo Electronico</label><input type="text" id="strCorreo" name="strCorreo" placeholder="Email" required readonly></div>
+                <div class="field"><label for="strResidencia">Lugar de Residencia</label><input type="text" id="strResidencia" name="strResidencia"  placeholder="Lugar de Residencia" required></div>
+                <div class="field"><label for="strDescription">Acerca de mí</label><textarea id="strDescription" name="strDescription" maxlength="100" wrap="soft"></textarea></div>
+                <div class="field"><label for="btnSave">Guardar</label><button type="button" class="btn btn-default" onclick="updateDueno()">Guardar</button></div>
+            </div>
+        </div>
+    </form>
+
+    <!-- JavaScript -->
+    <script src="../js/jquery-1.10.2.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+    <script src="../js/formDueno.js"></script>
+
+    <!-- Custom JavaScript for the Menu Toggle -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+    });
+    </script>
+</body>
+
+</html>

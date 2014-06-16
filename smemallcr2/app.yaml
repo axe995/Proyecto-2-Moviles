@@ -1,0 +1,47 @@
+application: smemallcr
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+
+#- url: .*
+#  script: main.app
+
+#libraries:
+#- name: webapp2
+#  version: "2.5.2"
+
+- url: /css
+  static_dir: css
+
+- url: /js
+  static_dir: js
+
+- url: /img
+  static_dir: img
+
+- url: /fonts
+  static_dir: fonts
+
+- url: /HTML
+  static_dir: HTML
+
+- url: /.*
+  static_files: index.html
+  upload: index.html
+
+- url: /.*
+  static_files: HTML
+  upload: HTML
+
+#- url: /.*
+#  script: admin.application
+
+
+error_handlers:
+  - file: default_error.html
+
+  - error_code: over_quota
+    file: over_quota.html

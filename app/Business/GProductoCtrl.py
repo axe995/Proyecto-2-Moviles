@@ -13,6 +13,11 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'CommonEntities'))
 from google.appengine.ext import ndb
 import Constantes
 import DAProducto
+import DAMercaderia
+import DAContrato
+import DADueno
+import DATienda
+import DADisponibilidad
 import CProducto
 
 #Gestion Dueño Control
@@ -37,21 +42,83 @@ class GProductoCtrl:
 			self.Update()
 		if self.mOperation == Constantes.Constantes().mGMOperacionBorrarProducto:
 			self.Delete()
+		if self.mOperation == Constantes.Constantes().mGMOperacionSeleccProducto2:
+			self.Select2()
 
 
 	def Insert(self):
 		self.mReturnValue = "0"
+		keyTiendaValue = self.mRequest.get('GMKTI') #Correo del dueño
+		keyDueno = ""
+		qryDueno = DADueno.DADueno.query()
+		for recDueno in qryDueno:
+			if keyTiendaValue != "":
+				if recDueno.mCorreoDueno == keyTiendaValue:
+					keyDueno = str(recDueno.key.id())
+		keyTienda = ""
+		qry = DATienda.DATienda.query()
+		for recTienda in qry:
+			if keyDueno != "":
+				if str(recTienda.mKeyDuenoTienda) == keyDueno:
+					keyTienda = recTienda.key
+		keyContrato = ""
+		qryContrato = DAContrato.DAContrato.query()
+		for recContrato in qryContrato:
+			if recContrato.mTipoContrato == "venta":
+				keyContrato = recContrato.key
+		keyDisponibilidad = ""
+		qryDisponibilidad = DADisponibilidad.DADisponibilidad.query()
+		for recDisponibilidad in qryDisponibilidad:
+			if recDisponibilidad.mTipoDisponibilidad == "inmediata":
+				keyDisponibilidad = recDisponibilidad.key
+		dmerc = DAMercaderia.DAMercaderia()
+		dmerc.mNombreMerc = self.mRequest.get('GMNOM')
+		dmerc.mDescripcionMerc = self.mRequest.get('GMDES')
+		dmerc.mTipoMerc = "1"
+		dmerc.llaveTienda = str(keyTienda.id())
+		dmerc.llaveContrato = str(keyContrato.id())
+		dmerc.llaveDisponib = str(keyDisponibilidad.id())
+		keyMercaderia = dmerc.put()
 		ddueno = DAProducto.DAProducto()
-		ddueno.mKeyMerc = self.mRequest.get('GPRKMR')
+		ddueno.mKeyMerc = str(keyMercaderia.id())
 		ddueno.mCantidadDisponibleProd = self.mRequest.get('GPRCAN')
 		ddueno.mPrecioUnitarioProd = self.mRequest.get('GPRPUN')
 		ddueno.mFechaDevolucionProd = self.mRequest.get('GPRDEV')
 		ddueno.put()
-		self.mReturnValue = "1" 
+		self.mReturnValue = "1"
 		
 		
 
 	def Select(self):
+		lstProducto = []
+		keyDueno = str(self.mRequest.get('GPRKEY'))
+		qryDueno = DADueno.DADueno.query()
+		for recDueno in qryDueno:
+			if keyDueno != "":
+				if recDueno.mCorreoDueno == keyDueno:
+					keyDueno = str(recDueno.key.id())
+		keyTienda = ""
+		qry = DATienda.DATienda.query()
+		for recTienda in qry:
+			if keyDueno != "":
+				if str(recTienda.mKeyDuenoTienda) == keyDueno:
+					keyTienda = str(recTienda.key.id())
+		keyMercaderia = ""
+		qry = DAMercaderia.DAMercaderia.query()
+		for recMerc in qry:
+			if keyTienda != "":
+				if str(recMerc.mKeyTienda) == keyTienda:
+					keyMercaderia = str(recMerc.key.id())
+		qry = DAProducto.DAProducto.query()
+		for recProducto in qry:
+			if keyMercaderia != "":
+				if str(recProducto.mKeyMerc) == keyMercaderia:
+					lstProducto.append(CProducto.CProducto(str(recProducto.mKeyMerc),str(recProducto.mCantidadDisponibleProd),str(recProducto.mPrecioUnitarioProd),str(recProducto.mFechaDevolucionProd),str(recProducto.key.id())).jsonSerialize())
+			else :
+				lstProducto.append(CProducto.CProducto(str(recProducto.mKeyMerc),str(recProducto.mCantidadDisponibleProd),str(recProducto.mPrecioUnitarioProd),str(recProducto.mFechaDevolucionProd),str(recProducto.key.id())).jsonSerialize())
+		self.mReturnValue = lstProducto
+
+	def Select2(self):
 		lstProducto = []
 		keyValue = str(self.mRequest.get('GPRKEY'))
 		qry = DAProducto.DAProducto.query()
